@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var time = "";
+    var seconds=0;
+    var minutes =0;
+    function timer()
+    {
+        time = setInterval(function() {
+            if(seconds==60)
+            {
+                seconds=0;
+                minutes++;
+            }
+            seconds++;
+            document.getElementById('datetime').innerHTML = minutes + " : " + seconds;
+            
+        }, 1000);
+    }
+    function pause(){
+        clearInterval(time);
+        document.getElementById('starttimer').disabled = false;
+    }
+    function reset(){
+        clearInterval(time);
+        minutes=0;
+        seconds=0;
+        document.getElementById('datetime').innerHTML = minutes + " : " + seconds;
+        document.getElementById('starttimer').disabled = false;
+    }
+</script>
+<body>
+    <h1 id="datetime"></h1>
+    <button onclick="timer()" id="starttimer">start time</button>
+    <button id="stoptimer" onclick="pause()">stop time</button>
+    <button id="resettimer" onclick="reset()">reset time</button>
+    
+</body>
+</html>
